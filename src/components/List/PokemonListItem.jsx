@@ -6,7 +6,7 @@ const PokemonListItem = ({ id, name }) => {
       <div className="col-1">
         <h2>#{id}</h2>
       </div>
-      <div className="col-11 d-flex align-items-center">
+      <div className="col-11 d-flex">
         <h5 className="mb-1 align-self-center">{name}</h5>
       </div>
     </div>
