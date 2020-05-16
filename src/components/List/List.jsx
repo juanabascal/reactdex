@@ -12,9 +12,15 @@ const List = () => {
   return (
     <>
       <div className="list-group">
-        <a href="#" className="list-group-item list-group-item-action">
-          <PokemonListItem />
-        </a>
+        {list.map((item) => (
+          <a
+            key={item.id}
+            href="#"
+            className="list-group-item list-group-item-action"
+          >
+            <PokemonListItem id={item.id} name={item.name} />
+          </a>
+        ))}
       </div>
       <Pagination />
     </>
