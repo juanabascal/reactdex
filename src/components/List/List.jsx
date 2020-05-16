@@ -8,6 +8,11 @@ import _ from "lodash";
 
 const List = () => {
   const [list, setList] = useState(null);
+  const pagination = {
+    total: 50,
+    show: 5,
+    current: 5,
+  };
 
   useEffect(() => {
     Axios.get("https://pokeapi.co/api/v2/pokemon").then((res) => {
@@ -19,11 +24,6 @@ const List = () => {
       setList(pokeList);
     });
   }, []);
-
-  const pagination = {
-    total: 3,
-    current: 1,
-  };
 
   return (
     <>
@@ -40,7 +40,11 @@ const List = () => {
             </a>
           ))}
       </div>
-      <Pagination total={pagination.total} active={pagination.current} />
+      <Pagination
+        total={pagination.total}
+        current={pagination.current}
+        show={pagination.show}
+      />
     </>
   );
 };
