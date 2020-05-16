@@ -9,6 +9,11 @@ const List = () => {
     { id: 3, name: "Venasaur" },
   ];
 
+  const pagination = {
+    total: 4,
+    current: 1,
+  };
+
   return (
     <>
       <div className="list-group">
@@ -22,7 +27,7 @@ const List = () => {
           </a>
         ))}
       </div>
-      <Pagination />
+      <Pagination total={pagination.total} active={pagination.current} />
     </>
   );
 };
