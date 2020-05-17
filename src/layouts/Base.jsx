@@ -1,13 +1,20 @@
 import React from "react";
-import { Navbar } from "../components/Navbar";
-import List from "../components/List/List";
+import { Navbar } from "../components/navbar";
+import List from "../components/list/List";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+import NotFoundPage from "../components/pages/NotFoundPage";
 
 const Base = () => {
   return (
     <>
       <Navbar />
       <main className="container-fluid pt-2">
-        <List />
+        <BrowserRouter>
+          <Switch>
+            <Route path="/pokemon" component={List} />
+            <Route path="*" component={NotFoundPage} />
+          </Switch>
+        </BrowserRouter>
       </main>
     </>
   );

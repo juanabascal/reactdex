@@ -1,10 +1,10 @@
 import React from "react";
-import Pagination from "../Pagination/Pagination";
+import Pagination from "../pagination/Pagination";
 import PokemonListItem from "./PokemonListItem";
 import { useEffect } from "react";
 import { useState } from "react";
 import _ from "lodash";
-import LoadingSpinner from "../Loading/LoadingSpinner";
+import LoadingSpinner from "../loading/LoadingSpinner";
 import useCallbackFetch from "../../hooks/useCallbackFetch";
 import { useMemo } from "react";
 
