@@ -8,14 +8,22 @@ import _ from "lodash";
 
 const List = () => {
   const [list, setList] = useState(null);
-  const pagination = {
-    total: 50,
-    show: 5,
-    current: 5,
-  };
+  const [pagination, setPagination] = useState(
+    {
+      total: 50,
+      show: 5,
+      current: 1,
+      pageSize: 20,
+    },
+    []
+  );
 
   useEffect(() => {
-    Axios.get("https://pokeapi.co/api/v2/pokemon").then((res) => {
+    Axios.get(
+      `https://pokeapi.co/api/v2/pokemon?offset=${
+        pagination.pageSize * (pagination.current - 1)
+      }`
+    ).then((res) => {
       const pokeList = res.data.results.map((item) => {
         const id = _.split(item.url, "/")[6];
         return { name: _.capitalize(item.name), id: id };
@@ -23,7 +31,12 @@ const List = () => {
 
       setList(pokeList);
     });
-  }, []);
+  }, [pagination.current]);
+
+  const handleOnPageChange = (number) => {
+    const newPagination = { ...pagination, current: number };
+    setPagination(newPagination);
+  };
 
   return (
     <>
@@ -44,6 +57,7 @@ const List = () => {
         total={pagination.total}
         current={pagination.current}
         show={pagination.show}
+        onChangePage={handleOnPageChange}
       />
     </>
   );

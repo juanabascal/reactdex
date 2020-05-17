@@ -1,7 +1,7 @@
 import React, { useCallback, useMemo } from "react";
 import _ from "lodash";
 
-const Pagination = ({ total, current, show }) => {
+const Pagination = ({ total, current, show, onChangePage }) => {
   const sequence = useCallback(
     (start, stop, step) =>
       Array.from(
@@ -19,7 +19,7 @@ const Pagination = ({ total, current, show }) => {
 
   const inactiveElement = (number) => (
     <li className="page-item" key={number}>
-      <a className="page-link" href="#">
+      <a className="page-link" href="#" onClick={() => onChangePage(number)}>
         {number}
       </a>
     </li>
@@ -59,8 +59,8 @@ const Pagination = ({ total, current, show }) => {
     }
   };
 
-  const firstElement = useMemo(() => getFirstElement(), []);
-  const lastElement = useMemo(() => getLastElement(), []);
+  const firstElement = useMemo(() => getFirstElement(), [current]);
+  const lastElement = useMemo(() => getLastElement(), [current]);
 
   return (
     <nav aria-label="..." className="mt-3 float-right">
