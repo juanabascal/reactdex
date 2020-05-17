@@ -59,8 +59,8 @@ const Pagination = ({ total, current, show, onChangePage }) => {
     }
   };
 
-  const firstElement = useMemo(() => getFirstElement(), [current]);
-  const lastElement = useMemo(() => getLastElement(), [current]);
+  const firstElement = useMemo(() => getFirstElement(), [current, total]);
+  const lastElement = useMemo(() => getLastElement(), [current, total]);
 
   return (
     <nav aria-label="..." className="mt-3 float-right">
