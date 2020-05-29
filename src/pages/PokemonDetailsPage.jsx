@@ -1,5 +1,7 @@
 import React from "react";
-import TwoColumnCard from "../components/cards/TwoColumnCard";
+import CardWithColumns from "../components/cards/CardWithColumns";
+import PokemonDetailsCard from "../components/cards/PokemonDetailsCard";
+import PokemonImage from "../components/images/PokemonImage";
 
 const PokemonDetailsPage = () => {
   return (
@@ -17,11 +19,7 @@ const PokemonDetailsPage = () => {
 
       <div className="row mt-3">
         <div className="col-3">
-          <img
-            src="https://pokeres.bastionbot.org/images/pokemon/1.png"
-            className="img-fluid pr-4"
-            alt="Bulbasaur"
-          />
+          <PokemonImage id={1} />
         </div>
         <div className="col-9">
           <h1>
@@ -30,7 +28,11 @@ const PokemonDetailsPage = () => {
           <span className="badge badge-success">grass</span>
           <span className="badge badge-dark ml-2">poison</span>
 
-          <TwoColumnCard />
+          <PokemonDetailsCard
+            height="30"
+            weight={50}
+            abilitiesNames={["Chlorophyll", "Overgrow"]}
+          />
         </div>
       </div>
       <div className="mt-3">
