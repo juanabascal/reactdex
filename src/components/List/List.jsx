@@ -7,6 +7,7 @@ import _ from "lodash";
 import LoadingSpinner from "../loading/LoadingSpinner";
 import useCallbackFetch from "../../hooks/useCallbackFetch";
 import { useMemo } from "react";
+import { PokemonRepositoryGetList } from "../../api/pokemon/PokemonApi";
 
 const List = () => {
   const [list, setList] = useState([]);
@@ -17,15 +18,7 @@ const List = () => {
     pageSize: 20,
   });
 
-  const urlWithPagination = useMemo(
-    () =>
-      `https://pokeapi.co/api/v2/pokemon?offset=${
-        pagination.pageSize * (pagination.current - 1)
-      }&limit=${pagination.pageSize}`,
-    [pagination.current]
-  );
-
-  const [callback, isLoading] = useCallbackFetch(urlWithPagination);
+  const [callback, isLoading] = PokemonRepositoryGetList(pagination);
 
   useEffect(() => {
     callback(setList);
