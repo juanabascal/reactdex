@@ -12,7 +12,7 @@ const Base = () => {
       <main className="container pt-2">
         <BrowserRouter>
           <Switch>
-            <Route path="/pokemon/details" component={PokemonDetailsPage} />
+            <Route path="/pokemon/:id" component={PokemonDetailsPage} />
             <Route path="/pokemon" component={List} />
             <Route path="*" component={NotFoundPage} />
           </Switch>

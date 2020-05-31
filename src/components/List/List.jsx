@@ -5,8 +5,6 @@ import { useEffect } from "react";
 import { useState } from "react";
 import _ from "lodash";
 import LoadingSpinner from "../loading/LoadingSpinner";
-import useCallbackFetch from "../../hooks/useCallbackFetch";
-import { useMemo } from "react";
 import { PokemonRepositoryGetList } from "../../api/pokemon/PokemonApi";
 
 const List = () => {

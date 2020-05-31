@@ -6,8 +6,8 @@ const FlushList = ({ elements, icon }) => {
     <>
       <ul className="list-group list-group-flush">
         {elements.map((element) => (
-          <li className="list-group-item">
-            {element}
+          <li className="list-group-item" key={element.id}>
+            {element.name}
             {icon && (
               <span className="float-right">
                 <FontAwesomeIcon icon={icon} />
