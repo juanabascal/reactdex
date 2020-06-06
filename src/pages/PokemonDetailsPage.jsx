@@ -4,6 +4,7 @@ import PokemonImage from "../components/images/PokemonImage";
 import _ from "lodash";
 import { PokemonRepositoryGetPokemon } from "../api/pokemon/PokemonApi";
 import LoadingSpinner from "../components/loading/LoadingSpinner";
+import { FormattedMessage } from "react-intl";
 
 const PokemonDetailsPage = ({ match: { params } }) => {
   const { id } = params;
@@ -56,10 +57,10 @@ const PokemonDetailsPage = ({ match: { params } }) => {
           </div>
           <div className="mt-3">
             <button type="button" className="btn btn-link float-left">
-              {"<< Previous"}
+              {"<< "} <FormattedMessage id="navigation.prev" default="Prev" />
             </button>
             <button type="button" className="btn btn-link float-right">
-              {"Next >>"}
+              <FormattedMessage id="navigation.next" default="Next" /> {">>"}
             </button>
           </div>
         </>
