@@ -5,6 +5,7 @@ import _ from "lodash";
 import { PokemonRepositoryGetPokemon } from "../api/pokemon/PokemonApi";
 import LoadingSpinner from "../components/loading/LoadingSpinner";
 import { FormattedMessage } from "react-intl";
+import { Link } from "react-router-dom";
 
 const PokemonDetailsPage = ({ match: { params } }) => {
   const { id } = params;
@@ -15,7 +16,7 @@ const PokemonDetailsPage = ({ match: { params } }) => {
 
   useEffect(() => {
     callback(setPokemon);
-  }, []);
+  }, [id]);
 
   return (
     <>
@@ -25,7 +26,9 @@ const PokemonDetailsPage = ({ match: { params } }) => {
           <nav aria-label="breadcrumb">
             <ol className="breadcrumb mb-5 mt-2">
               <li className="breadcrumb-item">
-                <a href="#">Pokemon List</a>
+                <Link className="btn-link" to="/">
+                  Pokemon List
+                </Link>
               </li>
               <li className="breadcrumb-item active" aria-current="page">
                 {_.capitalize(pokemon.name)}
@@ -56,12 +59,23 @@ const PokemonDetailsPage = ({ match: { params } }) => {
             </div>
           </div>
           <div className="mt-3">
-            <button type="button" className="btn btn-link float-left">
-              {"<< "} <FormattedMessage id="navigation.prev" default="Prev" />
-            </button>
-            <button type="button" className="btn btn-link float-right">
-              <FormattedMessage id="navigation.next" default="Next" /> {">>"}
-            </button>
+            {/* TODO: Handle edge cases */}
+            <Link
+              to={`${pokemon.id - 1}`}
+              onClick={() => setPokemon(null)}
+              type="button"
+              className="btn btn-link float-left"
+            >
+              {"<< "} <FormattedMessage id="navigation.prev" />
+            </Link>
+            <Link
+              to={`${pokemon.id + 1}`}
+              onClick={() => setPokemon(null)}
+              type="button"
+              className="btn btn-link float-right"
+            >
+              <FormattedMessage id="navigation.next" /> {">>"}
+            </Link>
           </div>
         </>
       )}

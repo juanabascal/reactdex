@@ -8,16 +8,16 @@ import NotFoundPage from "../pages/NotFoundPage";
 const Base = () => {
   return (
     <>
-      <Navbar />
-      <main className="container pt-2">
-        <BrowserRouter>
+      <BrowserRouter>
+        <Navbar />
+        <main className="container pt-2">
           <Switch>
             <Route path="/pokemon/:id" component={PokemonDetailsPage} />
-            <Route path="/pokemon" component={List} />
+            <Route path="/" component={List} />
             <Route path="*" component={NotFoundPage} />
           </Switch>
-        </BrowserRouter>
-      </main>
+        </main>
+      </BrowserRouter>
     </>
   );
 };

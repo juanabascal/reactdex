@@ -6,6 +6,7 @@ import { useState } from "react";
 import _ from "lodash";
 import LoadingSpinner from "../loading/LoadingSpinner";
 import { PokemonRepositoryGetList } from "../../api/pokemon/PokemonApi";
+import { Link } from "react-router-dom";
 
 const List = () => {
   const [list, setList] = useState([]);
@@ -34,14 +35,14 @@ const List = () => {
         <div className="list-group">
           {list &&
             list.map((item) => (
-              <a
+              <Link
                 key={item.id}
-                href="#"
+                to={`pokemon/${item.id}`}
                 className="list-group-item list-group-item-action"
               >
                 {/* Como podría enchufar aquí otro tipo de items? */}
                 <PokemonListItem id={item.id} name={item.name} />
-              </a>
+              </Link>
             ))}
         </div>
       )}

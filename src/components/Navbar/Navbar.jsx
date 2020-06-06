@@ -2,6 +2,7 @@ import React from "react";
 import { useContext } from "react";
 import { PageConfigurationContext } from "../../contexts/PageConfigurationContext";
 import Select from "../selector/Select";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const languages = [
@@ -20,9 +21,9 @@ const Navbar = () => {
 
   return (
     <nav className="navbar navbar-dark bg-dark">
-      <a className="navbar-brand" href="#">
+      <Link className="navbar-brand" to="/">
         Reactdex
-      </a>
+      </Link>
       <div className="col-auto my-1">
         <Select
           onSelect={onHandleLanguageChange}
