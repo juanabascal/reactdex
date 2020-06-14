@@ -19,13 +19,13 @@ const Pagination = ({ total, current, show, onChangePage }) => {
 
   const inactiveElement = (number) => (
     <li className="page-item" key={number}>
-      <a className="page-link" href="#" onClick={() => onChangePage(number)}>
+      <a className="page-link" href="/#" onClick={() => onChangePage(number)}>
         {number}
       </a>
     </li>
   );
 
-  const getLastElement = () => {
+  const getLastElement = useCallback(() => {
     let margin = 0;
     if (show % 2 === 0) {
       margin = show / 2;
@@ -40,9 +40,9 @@ const Pagination = ({ total, current, show, onChangePage }) => {
     } else {
       return total;
     }
-  };
+  }, [current, total, show]);
 
-  const getFirstElement = () => {
+  const getFirstElement = useCallback(() => {
     let margin = 0;
     if (show % 2 === 0) {
       margin = show / 2 - 1;
@@ -57,10 +57,10 @@ const Pagination = ({ total, current, show, onChangePage }) => {
     } else {
       return 1;
     }
-  };
+  }, [current, total, show]);
 
-  const firstElement = useMemo(() => getFirstElement(), [current, total]);
-  const lastElement = useMemo(() => getLastElement(), [current, total]);
+  const firstElement = useMemo(() => getFirstElement(), [getFirstElement]);
+  const lastElement = useMemo(() => getLastElement(), [getLastElement]);
 
   return (
     <nav aria-label="..." className="mt-3 float-right">

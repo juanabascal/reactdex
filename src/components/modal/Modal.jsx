@@ -9,7 +9,6 @@ const Modal = ({ isShowing, hide, header, text }) =>
           <div className={styles.overlay} />
           <div
             className={styles.wrapper}
-            aria-customModal
             aria-hidden
             tabIndex={-1}
             role="dialog"

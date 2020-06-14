@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import PokemonDetailsCard from "../components/cards/PokemonDetailsCard";
 import PokemonImage from "../components/images/PokemonImage";
 import _ from "lodash";
-import { PokemonRepositoryGetPokemon } from "../api/pokemon/PokemonApi";
+import { PokemonApi } from "../api/pokemon";
 import LoadingSpinner from "../components/loading/LoadingSpinner";
 import { FormattedMessage } from "react-intl";
 import { Link } from "react-router-dom";
@@ -12,11 +12,11 @@ const PokemonDetailsPage = ({ match: { params } }) => {
 
   const [pokemon, setPokemon] = useState(null);
 
-  const [callback, isLoading] = PokemonRepositoryGetPokemon(id);
+  const [callback, isLoading] = PokemonApi.show(id);
 
   useEffect(() => {
     callback(setPokemon);
-  }, [id]);
+  }, [id, callback]);
 
   return (
     <>

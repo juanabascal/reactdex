@@ -3,9 +3,8 @@ import Pagination from "../pagination/Pagination";
 import PokemonListItem from "./PokemonListItem";
 import { useEffect } from "react";
 import { useState } from "react";
-import _ from "lodash";
 import LoadingSpinner from "../loading/LoadingSpinner";
-import { PokemonRepositoryGetList } from "../../api/pokemon/PokemonApi";
+import { PokemonApi } from "../../api/pokemon";
 import { Link } from "react-router-dom";
 
 const List = () => {
@@ -17,11 +16,11 @@ const List = () => {
     pageSize: 20,
   });
 
-  const [callback, isLoading] = PokemonRepositoryGetList(pagination);
+  const [callback, isLoading] = PokemonApi.index(pagination);
 
   useEffect(() => {
     callback(setList);
-  }, [pagination.current]);
+  }, [callback]);
 
   const handleOnPageChange = (number) => {
     const newPagination = { ...pagination, current: number };

@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import Base from "./layouts/Base";
 import { PageConfigurationContext } from "./contexts/PageConfigurationContext";
 import { IntlProvider } from "react-intl";

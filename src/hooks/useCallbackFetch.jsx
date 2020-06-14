@@ -23,7 +23,7 @@ const useCallbackFetch = (url, mapper = null) => {
           setStatus(res.response.status);
         });
     },
-    [url]
+    [url, mapper]
   );
 
   return [method, loading, status, data];

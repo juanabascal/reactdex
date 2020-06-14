@@ -1,5 +1,4 @@
 import React from "react";
-import { faQuestionCircle } from "@fortawesome/free-solid-svg-icons";
 import Card from "./Card";
 
 const CardWithColumns = ({ children }) => {
